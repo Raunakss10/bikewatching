@@ -1,4 +1,4 @@
-/* ---------- Header + time slider ---------- */
+
 header {
   display: flex;
   gap: 1em;
@@ -20,8 +20,6 @@ header {
   width: 16em;
   accent-color: steelblue;
 }
-
-/* Own lines so the slider doesn't jump when the time text changes */
 .time-filter time,
 .time-filter em {
   display: block;
@@ -38,8 +36,6 @@ header {
   color: #7a8790;
   font-weight: 400;
 }
-
-/* ---------- Map ---------- */
 #map {
   flex: 1;
   min-height: 520px;
@@ -49,8 +45,6 @@ header {
   box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
   overflow: hidden;
 }
-
-/* SVG overlay on top of the map canvas */
 #map svg {
   position: absolute;
   inset: 0;
@@ -76,8 +70,6 @@ header {
 #status:empty {
   display: none;
 }
-
-/* ---------- Shared flow colors (circles + legend) ---------- */
 #map circle,
 .legend > div {
   --color-departures: steelblue;
@@ -94,7 +86,7 @@ header {
   fill-opacity: 0.6;
   stroke: white;
   stroke-width: 1;
-  pointer-events: auto; /* re-enable so <title> tooltips work */
+  pointer-events: auto;
   cursor: help;
   transition: r 200ms ease-out;
 }
@@ -102,8 +94,6 @@ header {
 #map circle:hover {
   fill-opacity: 0.9;
 }
-
-/* ---------- Legend (design 2: swatches + labels) ---------- */
 .legend {
   display: flex;
   align-items: center;
