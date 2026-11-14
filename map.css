@@ -1,0 +1,145 @@
+/* ---------- Header + time slider ---------- */
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+.time-filter {
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: end;
+  gap: 0.15em;
+  font-weight: 600;
+}
+
+#time-slider {
+  width: 16em;
+  accent-color: steelblue;
+}
+
+/* Own lines so the slider doesn't jump when the time text changes */
+.time-filter time,
+.time-filter em {
+  display: block;
+  min-height: 1.5em;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-filter em {
+  color: #7a8790;
+  font-weight: 400;
+}
+
+.time-filter small {
+  color: #7a8790;
+  font-weight: 400;
+}
+
+/* ---------- Map ---------- */
+#map {
+  flex: 1;
+  min-height: 520px;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+/* SVG overlay on top of the map canvas */
+#map svg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#status {
+  position: absolute;
+  z-index: 2;
+  top: 0.75em;
+  left: 0.75em;
+  margin: 0;
+  padding: 0.4em 0.8em;
+  background: rgb(255 255 255 / 0.9);
+  border-radius: 6px;
+  font-size: 0.9em;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.12);
+}
+
+#status:empty {
+  display: none;
+}
+
+/* ---------- Shared flow colors (circles + legend) ---------- */
+#map circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+#map circle {
+  fill: var(--color);
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+  pointer-events: auto; /* re-enable so <title> tooltips work */
+  cursor: help;
+  transition: r 200ms ease-out;
+}
+
+#map circle:hover {
+  fill-opacity: 0.9;
+}
+
+/* ---------- Legend (design 2: swatches + labels) ---------- */
+.legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-block: 1em;
+}
+
+.legend-label {
+  color: #7a8790;
+  font-weight: 600;
+}
+
+.legend > div {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.legend > div::before {
+  content: '';
+  width: 1em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map circle {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .time-filter {
+    margin-left: 0;
+    justify-items: start;
+  }
+}

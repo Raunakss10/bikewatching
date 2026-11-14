@@ -1,0 +1,24 @@
+body {
+  font: 100%/1.5 system-ui, sans-serif;
+  display: flex;
+  flex-flow: column;
+  max-width: 80em;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 1em;
+  color: #1d2a35;
+  background: #f7f8f6;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0.3em 0 0;
+  color: #5b6873;
+  max-width: 42em;
+}
